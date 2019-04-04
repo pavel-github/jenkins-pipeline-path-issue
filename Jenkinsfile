@@ -2,7 +2,7 @@ pipeline {
   agent { label 'nodejs' }
 
   environment {
-    PATH = "/opt/jenkins/tools/hudson.tasks.Maven_MavenInstallation/3.6.0/bin:$PATH"
+    PATH = "/opt/jenkins/tools/hudson.tasks.Maven_MavenInstallation/3.6.0/bin:${PATH}"
   }
 
   stages {
