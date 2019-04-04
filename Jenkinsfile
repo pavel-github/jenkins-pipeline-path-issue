@@ -16,7 +16,7 @@ pipeline {
     stage('Security') {
       steps {
         sh 'echo $PATH'
-        withMaven(maven: 'maven-3.6.0') {
+        withMaven(maven: '3.6.0') {
           sh 'mvn clean test'
           snykSecurity monitorProjectOnBuild: false,
                        snykInstallation: 'snyk@latest',
