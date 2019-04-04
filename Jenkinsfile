@@ -23,6 +23,7 @@ pipeline {
                        snykTokenId: 'my-snyk-api-token',
                        failOnIssues: true
         }
+      }
     }
   }
 }
