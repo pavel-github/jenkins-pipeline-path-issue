@@ -18,11 +18,12 @@ pipeline {
         sh 'echo $PATH'
         withMaven(maven: '3.6.0') {
           sh 'mvn clean test'
-          snykSecurity monitorProjectOnBuild: false,
+         
+        }
+         snykSecurity monitorProjectOnBuild: false,
                        snykInstallation: 'snyk@latest',
                        snykTokenId: 'my-snyk-api-token',
                        failOnIssues: true
-        }
       }
     }
   }
