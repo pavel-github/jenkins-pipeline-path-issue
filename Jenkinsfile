@@ -1,10 +1,6 @@
 pipeline {
   agent { label 'nodejs' }
 
-  environment {
-    PATH = "/opt/jenkins/tools/hudson.tasks.Maven_MavenInstallation/3.6.0/bin:${PATH}"
-  }
-
   stages {
     stage('Checkout') {
       steps {
@@ -18,12 +14,13 @@ pipeline {
         sh 'echo $PATH'
         withMaven(maven: '3.6.0') {
           sh 'mvn clean test'
-         
         }
-         snykSecurity monitorProjectOnBuild: false,
+        withEnv(['PATH+MAVEN=/opt/jenkins/tools/hudson.tasks.Maven_MavenInstallation/3.6.0/bin']) {
+          snykSecurity monitorProjectOnBuild: false,
                        snykInstallation: 'snyk@latest',
                        snykTokenId: 'my-snyk-api-token',
                        failOnIssues: true
+        } 
       }
     }
   }
