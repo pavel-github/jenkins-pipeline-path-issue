@@ -16,6 +16,7 @@ pipeline {
           sh 'mvn clean test'
         }
         withEnv(['PATH+MAVEN=/opt/jenkins/tools/hudson.tasks.Maven_MavenInstallation/3.6.0/bin']) {
+          sh 'echo $PATH'
           snykSecurity monitorProjectOnBuild: false,
                        snykInstallation: 'snyk@latest',
                        snykTokenId: 'my-snyk-api-token',
