@@ -24,5 +24,13 @@ pipeline {
         } 
       }
     }
+    
+    stage('Build') {
+      steps {
+        withMaven(maven: '3.6.0') {
+          sh 'mvn clean package'
+        }
+      }
+    }
   }
 }
