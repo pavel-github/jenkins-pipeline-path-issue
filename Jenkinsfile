@@ -20,7 +20,7 @@ pipeline {
           snykSecurity monitorProjectOnBuild: false,
                        snykInstallation: 'snyk@latest',
                        snykTokenId: 'my-snyk-api-token',
-                       failOnIssues: true
+                       failOnIssues: false
         } 
       }
     }
